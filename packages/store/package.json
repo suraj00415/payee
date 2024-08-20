@@ -1,0 +1,17 @@
+{
+  "name": "@repo/stores",
+  "version": "1.0.0",
+  "main": "index.js",
+  "exports": {
+    "./store": "./features/store.ts",
+    "./sample-slice": "./features/sample/sampleSlice.ts"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {}
+}
