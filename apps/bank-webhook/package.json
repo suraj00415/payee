@@ -12,7 +12,7 @@
   "dependencies": {
     "@repo/database": "*",
     "@types/express": "^4.17.21",
-    "esbuild": "^0.23.0",
+    "esbuild": "^0.23.1",
     "express": "^4.19.2"
   }
 }
