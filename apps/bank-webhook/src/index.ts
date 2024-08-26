@@ -27,4 +27,7 @@ app.post('/hdfc-webhook', async (req, res) => {
         console.log(error)
         return res.status(411).json({ message: "Error while processing the webhook" })
     }
+    finally {
+        await client.$disconnect();
+    }
 })

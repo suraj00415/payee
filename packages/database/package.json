@@ -5,8 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "exports":{
-    "./client":"./src/index.ts"
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "exports": {
+    "./client": "./src/index.ts"
   },
   "keywords": [],
   "author": "",
