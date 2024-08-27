@@ -18,7 +18,7 @@ export default function RootLayout({
     <ReduxProvider>
       <SessionProviderFn>
         <html lang="en">
-          <body className="dark:bg-black dark:text-white overflow-y-hidden">
+          <body className="dark:bg-black dark:text-white ">
             <NavBar />
             {children}
           </body>
