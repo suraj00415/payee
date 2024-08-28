@@ -8,7 +8,7 @@ export default function Layout({
     return (
         <div className="flex gap-5">
             <div className=" border-r border-slate-700 h-screen pt-10 px-3  ">
-                    <SideBarMap />
+                <SideBarMap />
             </div>
             {children}
         </div>

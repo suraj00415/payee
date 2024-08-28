@@ -24,6 +24,9 @@ async function getOnRampTransactions() {
     const txns = await client.onRampTransaction.findMany({
         where: {
             userId: Number(session?.user?.id)
+        },
+        orderBy: {
+            startTime: 'desc'
         }
     });
     await client.$disconnect();

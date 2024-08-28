@@ -2,24 +2,27 @@ import express from "express"
 import { client } from "@repo/database/client"
 
 const app = express()
+const port = 3005
+app.use(express.json())
+
 app.post('/hdfc-webhook', async (req, res) => {
     const paymentInformation = {
         token: req.body.token,
-        userId: req.body.user_identifier,
-        amount: req.body.amount
+        userId: Number(req.body.user_identifier),
+        amount: Number(req.body.amount)
     }
     try {
         await client.$transaction([
             client.balance.update({
-                where: { userId: req.body.userId },
+                where: { userId: Number(req.body.user_identifier) },
                 data: { amount: { increment: paymentInformation.amount } }
             }),
             client.onRampTransaction.updateMany({
                 where: {
-                    status: "Success"
+                    token: paymentInformation.token,
                 },
                 data: {
-                    token: paymentInformation.token,
+                    status: "Success"
                 }
             })])
         return res.json({ message: "Captured" })
@@ -30,4 +33,8 @@ app.post('/hdfc-webhook', async (req, res) => {
     finally {
         await client.$disconnect();
     }
+})
+
+app.listen(port, () => {
+    console.log("Server Started")
 })

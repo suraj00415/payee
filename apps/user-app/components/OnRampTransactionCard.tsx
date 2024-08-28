@@ -1,6 +1,6 @@
 import { Card } from "@repo/ui/card"
 
-type Status = "Processing" | "Failure" | "Success"
+export type Status = "Processing" | "Failure" | "Success"
 export const OnRampTransactions = ({
     transactions
 }: {
@@ -42,8 +42,8 @@ export const OnRampTransactions = ({
                         </div>
                     </div>
                     <div className="flex flex-col justify-center ">
-                        <div className="bg-slate-700 rounded-lg p-1 text-green-500 border border-slate-600">
-                            + Rs {t.amount / 100}
+                        <div className="bg-slate-700 rounded-lg p-1 text-green-500 border border-slate-500">
+                            {t.amount / 100} INR
                         </div>
                     </div>
                 </div>)}
