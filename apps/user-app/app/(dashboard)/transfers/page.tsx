@@ -19,7 +19,7 @@ async function getBalance() {
     }
 }
 
-async function getOnRampTransactions() {
+async function getOnRampTransactions(): Promise<any> {
     const session = await getServerSession(Auth_Options);
     const txns = await client.onRampTransaction.findMany({
         where: {

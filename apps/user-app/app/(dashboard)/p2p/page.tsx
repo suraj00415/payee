@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { P2PTranscationCard } from '../../../components/p2pTransactionCard';
 import SendMoneyCard from '../../../components/SendMoneyCard';
 import { Auth_Options } from '../../lib/auth';
-async function p2pTransactionFetch() {
+async function p2pTransactionFetch(): Promise<{ timestamp: Date; amount: number; fromUserId: number; toUserId: number; }[]> {
     const session = await getServerSession(Auth_Options);
     const txns = await client.p2pTransfer.findMany({
         where: {
@@ -21,12 +21,13 @@ async function p2pTransactionFetch() {
         }
     });
     await client.$disconnect();
-    return txns.map(t => ({
+    let a = txns.map(t => ({
         timestamp: t.timestamp,
         amount: t.amount,
         fromUserId: t.fromUserId,
         toUserId: t.toUserId
     }))
+    return a
 }
 export default async function P2P() {
     const p2pTransaction = await p2pTransactionFetch()
