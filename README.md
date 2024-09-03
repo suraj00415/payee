@@ -3,6 +3,12 @@
 
 This project is a **monorepo setup** using **Turborepo**, which includes multiple applications and packages. The primary applications are built using **Next.js** 🖼️, and the project leverages **TypeScript** 🟦 for static type checking, **ESLint** 🔍 for code linting, and **Prettier** 🎨 for code formatting. The project also uses **Prisma** 🗄️ as an ORM for database interactions and **Redux** 🌐 for state management.
 
+## 🖼️ Screenshot
+
+![Payee App Screenshot](./screenshots/a.png?raw=true)
+![Payee App Screenshot](./screenshots/b.png?raw=true)
+![Payee App Screenshot](./screenshots/c.png?raw=true)
+
 ## 🏗️ Applications and Packages
 
 ### 🧑‍💻 User App (`user-app`)
