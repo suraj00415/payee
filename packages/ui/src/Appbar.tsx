@@ -17,7 +17,7 @@ export const AppBar = ({
     return (
         <div className="flex justify-between border-b border-slate-700 px-4">
             <div className="text-2xl flex flex-col justify-center bg-gradient-to-r from-teal-400 to-green-300 bg-clip-text text-transparent font-bold">
-                Payee
+                PayEe
             </div>
             <div className="text-white font-bold">{user?.email}</div>
             <div className="flex flex-col justify-center pt-2">
