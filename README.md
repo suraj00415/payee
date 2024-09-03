@@ -1,85 +1,75 @@
-<<<<<<< HEAD
-# Turborepo starter
 
-This is an official starter Turborepo.
+# 🚀 Monorepo Project Overview
 
-## Using this example
+This project is a **monorepo setup** using **Turborepo**, which includes multiple applications and packages. The primary applications are built using **Next.js** 🖼️, and the project leverages **TypeScript** 🟦 for static type checking, **ESLint** 🔍 for code linting, and **Prettier** 🎨 for code formatting. The project also uses **Prisma** 🗄️ as an ORM for database interactions and **Redux** 🌐 for state management.
 
-Run the following command:
+## 🏗️ Applications and Packages
 
-```sh
-npx create-turbo@latest
-```
+### 🧑‍💻 User App (`user-app`)
+- A **Next.js** application that includes various components like `AddMoneyCard`, `BalanceCard`, `OnRampTransactionCard`, `SendMoneyCard`, `SideBarMap`, and `ProviderRedux`.
+- Uses **Tailwind CSS** 🌬️ for styling.
+- Implements authentication using **NextAuth** 🔐 with credentials and **GitHub providers**.
+- Contains pages for **user signup**, **dashboard**, **transactions**, and **P2P transfers**.
+- Interacts with a **PostgreSQL** 🐘 database using **Prisma**.
 
-## What's inside?
+### 🛍️ Merchant App (`merchant-app`)
+- Another **Next.js** application similar to the user app.
+- Uses custom fonts and **Tailwind CSS** 🌬️ for styling.
+- Contains a **layout** and a **home page**.
 
-This Turborepo includes the following packages/apps:
+### 🏦 Bank Webhook (`bank-webhook`)
+- An **Express.js** 🚂 application that handles webhooks from banks.
+- Uses **Prisma** 🗄️ to interact with the database.
 
-### Apps and Packages
+### 🎨 UI Package (`@repo/ui`)
+- A shared **React** component library used by both `user-app` and `merchant-app`.
+- Contains components like `Button`, `Card`, `Code`, `AppBar`, `Select`, and `TextInput`.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### 🗄️ Database Package (`@repo/database`)
+- Contains **Prisma** schema and client setup for database interactions.
+- Includes models for `User`, `Merchant`, `OnRampTransaction`, `Balance`, and `p2pTransfer`.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### 🛒 Store Package (`@repo/store`)
+- Contains **Redux** store setup and slices for state management.
+- Includes a sample slice for managing **counter** state.
 
-### Utilities
+### 🔧 ESLint Config Package (`@repo/eslint-config`)
+- Contains shared **ESLint** configurations for the monorepo.
 
-This Turborepo has some additional tools already setup for you:
+### 🟦 TypeScript Config Package (`@repo/typescript-config`)
+- Contains shared **TypeScript** configurations for the monorepo.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## ✨ Key Features
+- **Authentication** 🔐: Uses **NextAuth** for user authentication with credentials and **GitHub** providers.
+- **State Management** 🌐: Uses **Redux Toolkit** for state management.
+- **Database** 🗄️: Uses **Prisma ORM** to interact with a **PostgreSQL** database.
+- **Styling** 🌬️: Uses **Tailwind CSS** for styling components and pages.
+- **Monorepo Setup** 🏗️: Uses **Turborepo** to manage multiple applications and packages in a single repository.
+- **CI/CD** ⚙️: Includes **GitHub Actions** workflows for building on pull requests and deploying to **Docker Hub**.
 
-### Build
+## 🧩 Example Components and Pages
+- **`AddMoneyCard`**: A component for adding money to the user's account.
+- **`BalanceCard`**: A component for displaying the user's balance.
+- **`OnRampTransactionCard`**: A component for displaying recent on-ramp transactions.
+- **`SendMoneyCard`**: A component for sending money to another user.
+- **`SideBarMap`**: A component for rendering the sidebar navigation.
+- **`ProviderRedux`**: A component for providing the **Redux** store to the application.
+- **SignUp**: A page for user signup.
+- **Dashboard**: A page for the user dashboard.
+- **Transfers**: A page for managing transfers.
+- **P2P**: A page for managing **P2P transfers**.
 
-To build all apps and packages, run the following command:
+## 🗃️ Prisma Models
+- **`User`**: Represents a user in the system.
+- **`Merchant`**: Represents a merchant in the system.
+- **`OnRampTransaction`**: Represents an on-ramp transaction.
+- **`Balance`**: Represents the balance of a user.
+- **`p2pTransfer`**: Represents a **P2P transfer** between users.
 
-```
-cd my-turborepo
-pnpm build
-```
+## ⚙️ GitHub Actions Workflows
+- **Build on PR**: A workflow that runs on pull requests to the master branch, installs dependencies, generates Prisma client, and runs the build.
+- **Build and Deploy to Docker Hub**: A workflow that runs on pushes to the main branch, logs in to **Docker Hub**, builds and pushes a Docker image, and verifies the pushed image.
 
-### Develop
+---
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
-=======
-# payee
->>>>>>> f6bfff040962deedcf13b56743b07dcefa3f0b87
+This project is a comprehensive example of a **modern web application** 🌐 using a **monorepo structure**, **TypeScript**, **Next.js**, **Prisma**, **Redux**, and **Tailwind CSS**. It includes robust **authentication**, **state management**, and **database interaction** features, making it a solid foundation for building **scalable** web applications.
